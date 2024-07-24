@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 function App() {
+  const [menus, setMenus] = useState(null);
+
+  useEffect(function () {
+    async function fetchMenus() {
+      const res = await fetch("http://localhost:8000/api/data");
+      const data = await res.json();
+      setMenus(data);
+    }
+    fetchMenus();
+  }, []);
+
+  if (menus === null) return <div>Loading...</div>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar menus={menus} />
+      <div className="container">React App</div>
+    </>
   );
 }
 
