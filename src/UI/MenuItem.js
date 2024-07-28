@@ -7,8 +7,13 @@ const StyledMenuItem = styled.li`
   flex-direction: row;
   gap: 10px;
   justify-content: space-between;
+  padding: 5px 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
-const Heading = styled.div``;
+const Heading = styled.div`
+  font-size: 20px;
+`;
 const EditOption = styled.button``;
 const DeleteOption = styled.button``;
 const Options = styled.div`
@@ -22,7 +27,7 @@ function MenuItem({ menu }) {
   function handleDelete() {
     if (window.confirm("Proceed to delete Menu ?")) {
       del(menuid);
-    }   
+    }
   }
   return (
     <StyledMenuItem>
