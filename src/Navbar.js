@@ -7,7 +7,10 @@ function Navbar() {
   if (isLoading || isRefetching || isPending) return <div>Loading...</div>;
   const { data } = menus;
   return (
-    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav
+      className="navbar fixed-top navbar-expand-lg bg-primary"
+      data-bs-theme="dark"
+    >
       <div className="container-fluid container">
         <div
           className="navbar-brand"

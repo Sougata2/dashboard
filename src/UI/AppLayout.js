@@ -6,7 +6,9 @@ function AppLayout() {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="container py-5">
+        <Outlet />
+      </div>
     </div>
   );
 }
