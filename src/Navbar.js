@@ -1,4 +1,8 @@
-function Navbar({ menus }) {
+import { useMenus } from "./features/useMenus";
+
+function Navbar() {
+  const { isLoading, isPending, isRefetching, data: menus, error } = useMenus();
+  if (isLoading || isRefetching || isPending) return <div>Loading...</div>;
   const { data } = menus;
   return (
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">

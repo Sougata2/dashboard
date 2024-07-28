@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./Navbar";
+import Panel from "./UI/Panel";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
 function App() {
-  const [menus, setMenus] = useState(null);
-
-  useEffect(function () {
-    async function fetchMenus() {
-      const res = await fetch("http://localhost:8000/api/data");
-      const data = await res.json();
-      setMenus(data);
-    }
-    fetchMenus();
-  }, []);
-
-  if (menus === null) return <div>Loading...</div>;
-
   return (
-    <>
-      <Navbar menus={menus} />
-      <div className="container">React App</div>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Navbar />
+      <Panel />
+    </QueryClientProvider>
   );
 }
 
