@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import { useMenus } from "./features/useMenus";
 
 function Navbar() {
+  const navigate = useNavigate();
   const { isLoading, isPending, isRefetching, data: menus, error } = useMenus();
   if (isLoading || isRefetching || isPending) return <div>Loading...</div>;
   const { data } = menus;
   return (
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div className="container-fluid container">
-        <div className="navbar-brand">Dashboard</div>
+        <div
+          className="navbar-brand"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          Dashboard
+        </div>
         <button
           className="navbar-toggler"
           type="button"

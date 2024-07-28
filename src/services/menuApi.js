@@ -4,3 +4,13 @@ export async function getMenus() {
   const data = await res.json();
   return data;
 }
+
+export async function createMenu(newMenu) {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newMenu),
+  });
+  const data = await res.json();
+  return data;
+}

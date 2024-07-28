@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledCreateMenu = styled.div`
@@ -7,10 +8,12 @@ const StyledCreateMenu = styled.div`
 `;
 const CreateBtn = styled.button``;
 function CreateMenu() {
+  const navigate = useNavigate();
+
   return (
     <StyledCreateMenu>
-      <CreateBtn className="btn btn-info">
-        <i class="fa-solid fa-plus"></i> Menu
+      <CreateBtn className="btn btn-info" onClick={() => navigate("/create")}>
+        <i className="fa-solid fa-plus"></i> Menu
       </CreateBtn>
     </StyledCreateMenu>
   );

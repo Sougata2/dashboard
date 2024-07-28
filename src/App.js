@@ -1,6 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Navbar from "./Navbar";
 import Panel from "./UI/Panel";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AppLayout from "./UI/AppLayout";
+import CreateMenuForm from "./UI/CreateMenuForm";
+import EditMenuForm from "./UI/EditMenuForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,8 +16,15 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Navbar />
-      <Panel />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Panel />} />
+            <Route path="/create" element={<CreateMenuForm />} />
+            <Route path="/update/:id" element={<EditMenuForm />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
