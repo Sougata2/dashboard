@@ -83,7 +83,7 @@ function EditMenuForm() {
           </div>
         </div>
         <button type="submit" className="btn btn-primary" disabled={isEditing}>
-          Create Menu
+          Save Changes
         </button>
       </form>
     </div>
