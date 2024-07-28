@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <div>
       <Navbar />
-      <div className="container py-5">
+      <div className="container" style={{ paddingTop: "60px" }}>
         <Outlet />
       </div>
     </div>
