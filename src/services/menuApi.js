@@ -30,3 +30,11 @@ export async function editMenu(menu, id) {
   const data = await res.json();
   return data;
 }
+
+export async function deleteMenu(id) {
+    const res = await fetch(BASE_URL + `/${id}`, {
+        method: "DELETE",
+    });
+    const data = await res.json();
+    return data;
+}

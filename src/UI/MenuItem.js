@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useDeleteMenu } from "../features/useDeleteMenu";
 
 const StyledMenuItem = styled.li`
   display: flex;
@@ -16,7 +17,13 @@ const Options = styled.div`
 `;
 function MenuItem({ menu }) {
   const navigate = useNavigate();
+  const { del, isDeleting } = useDeleteMenu();
   const { menuid, menu_heading, menu_under, enable_yn, menu_name } = menu;
+  function handleDelete() {
+    if (window.confirm("Proceed to delete Menu ?")) {
+      del(menuid);
+    }   
+  }
   return (
     <StyledMenuItem>
       <Heading>{menu_heading}</Heading>
@@ -24,10 +31,15 @@ function MenuItem({ menu }) {
         <EditOption
           className="btn btn-warning"
           onClick={(e) => navigate(`/update/${menuid}`)}
+          disabled={isDeleting}
         >
           <i className="fa-solid fa-pencil"></i>
         </EditOption>
-        <DeleteOption className="btn btn-danger">
+        <DeleteOption
+          className="btn btn-danger"
+          onClick={handleDelete}
+          disabled={isDeleting}
+        >
           <i className="fa-solid fa-trash"></i>
         </DeleteOption>
       </Options>
