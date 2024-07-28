@@ -8,7 +8,7 @@ export function useCreateMenu() {
     onSuccess: () => {
       alert("New Menu Created");
       queryClient.invalidateQueries({
-        queryKey: ["menus"],
+        queryKey: ["menu"],
       });
     },
     onError: (err) => alert(err),

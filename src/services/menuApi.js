@@ -14,3 +14,19 @@ export async function createMenu(newMenu) {
   const data = await res.json();
   return data;
 }
+
+export async function getMenuById(menuid) {
+  const res = await fetch(BASE_URL + `/${menuid}`);
+  const data = await res.json();
+  return data;
+}
+
+export async function editMenu(menu, id) {
+  const res = await fetch(BASE_URL + `/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(menu),
+  });
+  const data = await res.json();
+  return data;
+}

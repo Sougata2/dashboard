@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { useCreateMenu } from "../features/useCreateMenu";
 
 function CreateMenuForm() {
+  const navigate = useNavigate();
   const { isCreating, create } = useCreateMenu();
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,6 +18,7 @@ function CreateMenuForm() {
     };
     create(newMenu);
     e.target.reset();
+    return navigate("/");
   }
   return (
     <div className="container">

@@ -36,7 +36,7 @@ function Navbar() {
                     menu.enable_yn === "N" ? "disabled" : ""
                   }`}
                   aria-current="page"
-                  href={`/${menu.menu_name}`}
+                  href={`/`}
                 >
                   {menu.menu_heading}
                 </a>

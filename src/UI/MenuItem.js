@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledMenuItem = styled.li`
@@ -14,12 +15,16 @@ const Options = styled.div`
   gap: 10px;
 `;
 function MenuItem({ menu }) {
+  const navigate = useNavigate();
   const { menuid, menu_heading, menu_under, enable_yn, menu_name } = menu;
   return (
     <StyledMenuItem>
       <Heading>{menu_heading}</Heading>
       <Options>
-        <EditOption className="btn btn-warning">
+        <EditOption
+          className="btn btn-warning"
+          onClick={(e) => navigate(`/update/${menuid}`)}
+        >
           <i className="fa-solid fa-pencil"></i>
         </EditOption>
         <DeleteOption className="btn btn-danger">
